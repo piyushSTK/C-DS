@@ -316,8 +316,34 @@ T\brak{n} = T\brak{0} + C + C + C + C ...... log_{2}(n) times \\
 \end{flalign}
 
 Hence the program has logarithmic time complexity.
+
+\section{Verification}
+The running time of the program was recorded to confirm the time complexity and time vs n was plotted using the collected data.\\
+Code for verification of time complexity can be found at 
+\begin{lstlisting}
+https://github.com/piyushSTK/C-DS/blob/main/Assignment1/codes/verify.py
+\end{lstlisting}
+The graph of T(n) vs n can be found in the figures section.\\
+
+
+
+
+
+
+
 \newpage
+
+
+
+
+
+
 \setcounter{figure}{0}
+
+
+
+
+
 \section{Figures}
 \label{Figures}
 
@@ -438,5 +464,15 @@ Hence the program has logarithmic time complexity.
 
 \end{figure}
 
+
+\begin{figure}[!h]
+    \centering
+    \begin{adjustbox}{width=\columnwidth}
+    \includegraphics[scale=0.6]{figs/log.png}
+    \end{adjustbox}
+    
+    \caption{T\brak{n} vs n}
+    \label{fig:verification}
+\end{figure}
 
 \end{document}
