@@ -6,7 +6,7 @@
 \usepackage[cmex10]{amsmath}
 
 \usepackage{amsthm}
-
+\usepackage{lipsum,adjustbox}
 \usepackage{mathrsfs}
 \usepackage{txfonts}
 \usepackage{stfloats}
@@ -271,64 +271,62 @@ The visualisation of recursive solution stack memory diagram and iterative solut
  section.
 
 \newpage
+
+\section{Problem}
+Derive the time complexity of the original solution.
+\newline
+\textbf{Solution}
+\newline
+Let's assume the time taken to process the given input N to be $T(n)$ .
+\newline
+So time taken to process N/2 will be $T(n/2)$
+\newline
+Lets assume print() function takes some constant C time to process.
+\newline Therefore from the program we can see that:
+\begin{equation} \label{eq1}
+\begin{split}
+T\brak{n} = T\brak{n/2} + C\\
+\end{split}
+\end{equation}
+and
+\begin{equation} \label{eq2}
+\begin{split}
+T\brak{n/2} = T\brak{n/4} + C\\
+\end{split}
+\end{equation}
+Substituting equation \eqref{eq2} in \eqref{eq1} we get
+
+\begin{equation} \label{eq3}
+\begin{split}
+T\brak{n} = T\brak{n/4} + C + C\\
+\end{split}
+\end{equation}
+On repeated substitution till n $->$ 0 we get:
+
+\begin{equation} 
+\begin{split}
+T\brak{n} = T\brak{0} + C + C + C + C ...... log_{2}(n) times \\
+\end{split}
+\end{equation}
+
+\begin{flalign}
+&\implies T\brak{n} = C*log_{2}(n) + T\brak{0} & \\
+&\implies T\brak{n} \leqslant C*log_{2}(n) & \\
+&\implies T\brak{n} \in \mathcal{O}\brak{log(n)}&
+\end{flalign}
+
+Hence the program has logarithmic time complexity.
+\newpage
 \setcounter{figure}{0}
 \section{Figures}
 \label{Figures}
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}[
-  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
-  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
-  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
-  ]
-    
-  \node[single,align=center] {
-        ...\\
-        ...\\
-        ...\\
-        ...\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\        
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n};}\\
-  };
 
-\end{tikzpicture}
-    \caption{Stack Memory diagram for recursive solution}
-    \label{fig:recurStack}
-
-\end{figure}
 
 
 
 \begin{figure}[!h]
 \centering
-\begin{tikzpicture}[
-  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
-  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
-  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
-  ]
-    
-  \node[single,align=center] {
-
-        \\
-        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n\\int p\\int div};}\\
-  };
-
-\end{tikzpicture}
-    \caption{Stack memory diagram for iterative solution}
-    \label{fig:iterStack}
-
-\end{figure}
-
-\begin{figure}[!h]
-\centering
+\begin{adjustbox}{width=\textwidth}
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     \node [cloud] (start) {start};
@@ -382,7 +380,63 @@ The visualisation of recursive solution stack memory diagram and iterative solut
     % \path [line,dashed] (system) -- (init);
     % \path [line,dashed] (system) |- (evaluate);
 \end{tikzpicture}
+
+\end{adjustbox}
 \caption{Flowchart of recursive calls of convert(n)} \label{fig:M1}
 \end{figure}
+
+\clearpage
+
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[
+  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
+  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
+  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
+  ]
+    
+  \node[single,align=center] {
+
+        \\
+        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n\\int p\\int div};}\\
+  };
+
+\end{tikzpicture}
+    \caption{Stack memory diagram for iterative solution}
+    \label{fig:iterStack}
+
+\end{figure}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[
+  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
+  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
+  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
+  ]
+    
+  \node[single,align=center] {
+        ...\\
+        ...\\
+        ...\\
+        ...\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\        
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n};}\\
+  };
+
+\end{tikzpicture}
+    \caption{Stack Memory diagram for recursive solution}
+    \label{fig:recurStack}
+
+\end{figure}
+
 
 \end{document}
