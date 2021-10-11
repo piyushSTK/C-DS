@@ -26,7 +26,7 @@ for i in range(1,100000, 100):
     
 x = np.linspace(1,len(timeArr),len(timeArr))
 popt, pcov = curve_fit(objective, x, timeArr)
-                
+print("For the equation a+b*log(x), a: ", popt[0], " b:", popt[1])            
 plt.figure()
 plt.plot(x, timeArr, label="Original Noised Data")
 plt.plot(x, objective(x, *popt), 'r-', label="Fitted Curve")
