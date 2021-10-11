@@ -325,13 +325,29 @@ https://github.com/piyushSTK/C-DS/blob/main/Assignment1/codes/verify.py
 \end{lstlisting}
 The graph of T(n) vs n can be found in the figures section.\\
 
+\section{Problem}
+Find the parameters of the fitted curve in the last diagram.\\
+\textbf{Solution}\\
+The parameters of the curve can be printed from the given program.\\
+\begin{lstlisting}
+https://github.com/piyushSTK/C-DS/blob/main/Assignment1/codes/verify.py
+\end{lstlisting}
+For the logarithmic equation a + b*log(n), the parameters are: 
+\begin{equation} \label{eq2}
+\begin{split}
+a = 8.566065706804258 \times 10^{-6}\\
+b = 8.447329506915982\times 10^{-7}
+\end{split}
+\end{equation}
+Hence the equation becomes 
+\begin{equation} \label{eq2}
+\begin{split}
+T\brak{n} = 8.566065706804258 \times 10^{-6} \\+ 8.447329506915982\times 10^{-7}\times log(n)
+\end{split}
+\end{equation}
+Please note that the parameters of this equation are subject to change according to the running time data acquired.
 
 
-
-
-
-
-\newpage
 
 
 
@@ -340,15 +356,78 @@ The graph of T(n) vs n can be found in the figures section.\\
 
 \setcounter{figure}{0}
 
-
-
-
-
 \section{Figures}
 \label{Figures}
 
 
 
+\begin{figure}[!h]
+    \centering
+    \begin{adjustbox}{width=\columnwidth}
+    \includegraphics[scale=0.6]{figs/log.png}
+    \end{adjustbox}
+    
+    \caption{T\brak{n} vs n}
+    \label{fig:verification}
+\end{figure}
+
+\newpage
+
+
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[
+  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
+  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
+  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
+  ]
+    
+  \node[single,align=center] {
+
+        \\
+        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n\\int p\\int div};}\\
+  };
+
+\end{tikzpicture}
+    \caption{Stack memory diagram for iterative solution}
+    \label{fig:iterStack}
+
+\end{figure}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[
+  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
+  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
+  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
+  ]
+    
+  \node[single,align=center] {
+        ...\\
+        ...\\
+        ...\\
+        ...\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\        
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
+        \\
+        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n};}\\
+  };
+
+\end{tikzpicture}
+    \caption{Stack Memory diagram for recursive solution}
+    \label{fig:recurStack}
+
+\end{figure}
+
+
+
+\clearpage
 
 \begin{figure}[!h]
 \centering
@@ -410,69 +489,4 @@ The graph of T(n) vs n can be found in the figures section.\\
 \end{adjustbox}
 \caption{Flowchart of recursive calls of convert(n)} \label{fig:M1}
 \end{figure}
-
-\clearpage
-
-
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}[
-  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
-  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
-  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
-  ]
-    
-  \node[single,align=center] {
-
-        \\
-        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n\\int p\\int div};}\\
-  };
-
-\end{tikzpicture}
-    \caption{Stack memory diagram for iterative solution}
-    \label{fig:iterStack}
-
-\end{figure}
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}[
-  double/.style={draw, anchor=text, rectangle split,rectangle split parts=2, minimum height=6cm,minimum width=8cm},
-  triple/.style={draw, anchor=text, rectangle split,rectangle split parts=3},
-  single/.style={draw, anchor=text, rectangle split,rectangle split parts=1, minimum height=6cm,minimum width=8cm}
-  ]
-    
-  \node[single,align=center] {
-        ...\\
-        ...\\
-        ...\\
-        ...\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\        
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=center] {convert(n)\nodepart{second}\textbf{Local Variables}\\ int n};}\\
-        \\
-        \tikz{\node[double,align=left] {main()\nodepart{second}  \textbf{Local Variables}\\ int n};}\\
-  };
-
-\end{tikzpicture}
-    \caption{Stack Memory diagram for recursive solution}
-    \label{fig:recurStack}
-
-\end{figure}
-
-
-\begin{figure}[!h]
-    \centering
-    \begin{adjustbox}{width=\columnwidth}
-    \includegraphics[scale=0.6]{figs/log.png}
-    \end{adjustbox}
-    
-    \caption{T\brak{n} vs n}
-    \label{fig:verification}
-\end{figure}
-
 \end{document}
